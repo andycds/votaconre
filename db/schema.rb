@@ -32,9 +32,10 @@ ActiveRecord::Schema.define(version: 20150929004203) do
     t.string   "nome"
     t.string   "conselho"
     t.string   "documento"
+    t.string   "password_digest"
     t.integer  "election_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "votes", force: :cascade do |t|
