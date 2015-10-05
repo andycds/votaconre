@@ -9,15 +9,19 @@ class VotesController < ApplicationController
 			return
 		end
 		
+		#@candidate = Candidate.order("id").find_all_by_eleicao_id(@eleicao.id)
+		@vote = Vote.new
 		#if current_user
-			@vote = Vote.new
 		#else
 		#	redirect_to '/login'
 		#end
 	end
 
 	def create
-		@vote = Vote.new(vote_params)
+		#@vote = Vote.new(vote_params)
+
+		#v1 = Vote.create(person: p9, candidate: c1, election: e1)
+		@vote = Vote.new(person: current_user, candidate: Candidate.first, election: Election.first)
 		if @vote.save
 			redirect_to '/votado'
 			return
@@ -45,7 +49,7 @@ class VotesController < ApplicationController
 
 	private
 	def vote_params
-		params.require(:vote).permit(:content)
+		params.require("votos").permit(:content)
 	end
 
 	#def redirecionar_sem_acesso?

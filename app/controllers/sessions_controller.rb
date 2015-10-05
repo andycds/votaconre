@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 	def new
-		@title = 'versão 0.0.3'
+		@title = 'versão 0.0.5'
 	end
 	def create
 		@person = Person.find_by_documento(params[:session][:documento])
