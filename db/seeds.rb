@@ -22,6 +22,10 @@ p7 = Person.create(nome: "Eleitor 7", conselho: "CONRE3", documento: "000007", e
 p8 = Person.create(nome: "Eleitor 8", conselho: "CONRE3", documento: "000008", election: e1, password_digest: pass)
 p9 = Person.create(nome: "Eleitor 9", conselho: "CONRE3", documento: "000009", election: e1, password_digest: pass)
 
+10.upto(99) do |i|
+  Person.create(nome: "Eleitor #{i}", conselho: "CONRE3", documento: "0000#{i}", election: e1, password_digest: pass)
+end
+
 c1 = Candidate.create(nome: "Candidato 1", election: e1)
 c2 = Candidate.create(nome: "Candidato 2", election: e1)
 c3 = Candidate.create(nome: "Candidato 3", election: e1)
