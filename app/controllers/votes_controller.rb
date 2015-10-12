@@ -10,19 +10,33 @@ class VotesController < ApplicationController
 		end
 		
 		#@candidate = Candidate.order("id").find_all_by_eleicao_id(@eleicao.id)
-		@vote = Vote.new
-		#if current_user
-		#else
-		#	redirect_to '/login'
-		#end
+		#@vote = Vote.new
+		candidatos = current_user.election.candidates
+		@votos = Array.new candidatos.size
+		for i in 0...candidatos.size
+			@votos[i] = Vote.new(person: current_user, candidate: candidatos[i], election: current_user.election)
+		end
 	end
 
 	def create
 		#@vote = Vote.new(vote_params)
-
-		#v1 = Vote.create(person: p9, candidate: c1, election: e1)
-		@vote = Vote.new(person: current_user, candidate: Candidate.first, election: Election.first)
-		if @vote.save
+		votado = false
+		vv = params["votos"]
+		vv.values.each do |cid|
+			c = Candidate.find_by_id(cid)
+			v = Vote.new(person: current_user, candidate: c, election: current_user.election)
+			v.save
+			votado = true
+		end
+		#@votos.each do |v|
+		#	if v.vote_for_me
+		#		v.save
+		#		votado = true
+		#	end
+		#end
+		#@p = @vote.params
+		#@voto = Vote.new(person: current_user, candidate: Candidate.first, election: current_user.election)
+		if votado
 			redirect_to '/votado'
 			return
 		else

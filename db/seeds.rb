@@ -30,5 +30,5 @@ c1 = Candidate.create(nome: "Candidato 1", election: e1)
 c2 = Candidate.create(nome: "Candidato 2", election: e1)
 c3 = Candidate.create(nome: "Candidato 3", election: e1)
 
-v1 = Vote.create(person: p9, candidate: c1, election: e1)
-v2 = Vote.create(person: p9, candidate: c2, election: e1)
+#v1 = Vote.create(person: p9, candidate: c1, election: e1)
+#v2 = Vote.create(person: p9, candidate: c2, election: e1)

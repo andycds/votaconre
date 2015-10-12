@@ -2,7 +2,8 @@
 <meta charset="UTF-8"> 
 <html>
 <head>
-	<title>Eleições 2015 - CONRE-5</title>
+	<% eleicao = current_user.election %>
+	<title><%= eleicao %></title>
 	<script language="JavaScript" type="text/JavaScript">
 
 function fncCheckList(obj) {
@@ -35,31 +36,27 @@ function fncCheckList(obj) {
 
 <body>
 	<!--<img src="logo.png">-->
-	<p> <h3><%= current_user.election.nome %> - CONRE</h3></p>
+	
+	<p> <h3><%= eleicao.nome %> - CONRE</h3></p>
 	<p> <b>Eleitor:&nbsp;</b><%= current_user.nome %></p>
 	<p> <b>Login: &nbsp;</b><%= current_user.documento %></p>
 	<p></p>
 
 	<p>Escolha até três candidatos</p>
-	<%= form_for(@vote) do |f| %> 
+	<%= form_for :vote do |f| %> 
 	<ul style="list-style-type: none;">
-		<li><input type="checkbox" id="1" name="votos[1]" value="1" onclick="fncCheckList(this)">Candidato 1</li>
-		<!--<li><input type="checkbox" name="votos[< %= candidato.id %>]" value="< %= candidato.id %>" id="< %= candidato.id %>" onclick="javascript:fncCheckList(this);"></li>-->
+		<% for i in 0...@votos.size do %>
+			<% candidato = @votos[i].candidate %>
+			<li><input type="checkbox" name="votos[<%=candidato.id%>]" value="<%=candidato.id%>" id="<%=candidato.id%>" onclick="javascript:fncCheckList(this);"> <%= candidato.nome %></li>
 
-		<li><input type="checkbox" id="2" name="votos[2]" value="2" onclick="fncCheckList(this)">Candidato 2</li>
-		<li><input type="checkbox" id="3" name="votos[3]" value="3" onclick="fncCheckList(this)">Candidato 3</li>
-		<li><input type="checkbox" id="4" name="votos[4]" value="4" onclick="fncCheckList(this)">Candidato 4</li>
-		<li><input type="checkbox" id="5" name="votos[5]" value="5" onclick="fncCheckList(this)">Candidato 5</li>
-		<li><input type="checkbox" id="6" name="votos[6]" value="6" onclick="fncCheckList(this)">Voto Branco</li>
-		<li><input type="checkbox" id="7" name="votos[7]" value="7" onclick="fncCheckList(this)">Voto Nulo</li>
+		<% end %>
+		<li><input type="checkbox" id="6" name="votos[6]" value="6" onclick="fncCheckList(this)"> Voto Branco</li>
+		<li><input type="checkbox" id="7" name="votos[7]" value="7" onclick="fncCheckList(this)"> Voto Nulo</li>
 	</ul>
 	<p></p>
 	<p></p>
 	<p>
 
-	
-		<!--< %= f.check_box("A") %> -->
-		<!--< %= f.check_box :checa2 %> -->
 		<%= f.submit "Votar", class: "btn-submit" %>
 	<% end %>
 
