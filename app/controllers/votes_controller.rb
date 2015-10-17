@@ -59,6 +59,18 @@ class VotesController < ApplicationController
 		end
 		@person = current_user
 		@voto = Vote.find_by_person_id(current_user.id) 
+
+
+		agora = Rails.env == 'production' ? (Time.now + 6.hour).to_s : Time.now.to_s
+		html = ""
+#		html = html + '<p> <img src="http://conre3.heroku.com/images/conre3logo.png" /> </p>'
+		html = html + "<p><b>" + current_user.election.nome + "</b></p>"
+		html = html + "<p> Comprovante de vota&ccedil;&atilde;o</p> <p>Gerado &agrave;s: " + agora + "</p>"# + params
+		html = html + "<p>Profissional: " + current_user.nome + "</p>"
+		html = html + "<p>Login: " + current_user.documento + "</p>"
+		pdfkit_instance = PDFKit.new(html)
+		send_data(pdfkit_instance.to_pdf)
+
 	end
 
 	private
