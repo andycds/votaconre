@@ -69,7 +69,7 @@ class VotesController < ApplicationController
 		html = html + "<p>Profissional: " + current_user.nome + "</p>"
 		html = html + "<p>Login: " + current_user.documento + "</p>"
 		pdfkit_instance = PDFKit.new(html)
-		send_data(pdfkit_instance.to_pdf)
+		send_data(pdfkit_instance.to_pdf, {filename: "comprovante.pdf"})
 
 	end
 
