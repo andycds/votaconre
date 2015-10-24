@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+#ruby version for heroku
 ruby '2.2.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
+#rails_12factor for heroku
+gem 'rails_12factor'
+
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 gem 'pg', '>=0.17.1'
