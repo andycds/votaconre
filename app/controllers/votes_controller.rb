@@ -60,7 +60,18 @@ class VotesController < ApplicationController
 		@person = current_user
 		@voto = Vote.find_by_person_id(current_user.id) 
 
+		render 'votado'
+	end
 
+	def pdfdown
+		if !current_user
+			redirect_to '/login'
+			return
+		end
+		if !current_user.ja_votou?
+			redirect_to '/'
+			return
+		end
 		agora = Rails.env == 'production' ? (Time.now + 6.hour).to_s : Time.now.to_s
 		html = ""
 #		html = html + '<p> <img src="http://conre3.heroku.com/images/conre3logo.png" /> </p>'
@@ -70,7 +81,6 @@ class VotesController < ApplicationController
 		html = html + "<p>Login: " + current_user.documento + "</p>"
 		pdfkit_instance = PDFKit.new(html)
 		send_data(pdfkit_instance.to_pdf, {filename: "comprovante.pdf"})
-
 	end
 
 	private

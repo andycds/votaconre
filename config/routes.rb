@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/' => 'votes#new'
   post '/' => 'votes#create'
   get '/votado' => 'votes#votado'
+  get '/pdfdown' => 'votes#pdfdown'
   resources :votes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
