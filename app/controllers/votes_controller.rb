@@ -19,14 +19,19 @@ class VotesController < ApplicationController
 	end
 
 	def create
-		#@vote = Vote.new(vote_params)
+		if current_user.ja_votou?
+			redirect_to '/'
+			return
+		end
 		votado = false
 		vv = params["votos"]
-		vv.values.each do |cid|
-			c = Candidate.find_by_id(cid)
-			v = Vote.new(person: current_user, candidate: c, election: current_user.election)
-			v.save
-			votado = true
+		if vv != nil
+			vv.values.each do |cid|
+				c = Candidate.find_by_id(cid)
+				v = Vote.new(person: current_user, candidate: c, election: current_user.election)
+				v.save
+				votado = true
+			end
 		end
 		#@votos.each do |v|
 		#	if v.vote_for_me
@@ -40,7 +45,7 @@ class VotesController < ApplicationController
 			redirect_to '/votado'
 			return
 		else
-			render 'new'
+			redirect_to '/'
 		end
 		#respond_to do |format|
 		#	@votacao.each {|v| v.save}
@@ -73,12 +78,14 @@ class VotesController < ApplicationController
 			return
 		end
 		agora = Rails.env == 'production' ? (Time.now + 6.hour).to_s : Time.now.to_s
-		html = ""
+		html = "<!DOCTYPE html><meta charset='UTF-8'><html><head></head><body>"
+		html = html + "<div style='width: 400px; border: 1px solid gray; margin:20px; padding:20px;'>"
 #		html = html + '<p> <img src="http://conre3.heroku.com/images/conre3logo.png" /> </p>'
 		html = html + "<p><b>" + current_user.election.nome + "</b></p>"
 		html = html + "<p> Comprovante de vota&ccedil;&atilde;o</p> <p>Gerado &agrave;s: " + agora + "</p>"# + params
 		html = html + "<p>Profissional: " + current_user.nome + "</p>"
 		html = html + "<p>Login: " + current_user.documento + "</p>"
+		html = html + "</div></body></html>"
 		pdfkit_instance = PDFKit.new(html)
 		send_data(pdfkit_instance.to_pdf, {filename: "comprovante.pdf"})
 	end

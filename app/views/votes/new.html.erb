@@ -35,9 +35,10 @@ function fncCheckList(obj) {
 </head>
 
 <body>
-	<!--<img src="logo.png">-->
+	<div style="margin-left: 20px; width: 400px; border: 1px solid bisque; padding: 20px;">
+	<%= image_tag 'logo.png', style: "margin-left: 40px" %>
 	
-	<p> <h3><%= eleicao.nome %> - CONRE</h3></p>
+	<p> <h3><%= eleicao.nome %></h3></p>
 	<p> <b>Eleitor:&nbsp;</b><%= current_user.nome %></p>
 	<p> <b>Login: &nbsp;</b><%= current_user.documento %></p>
 	<p></p>
@@ -57,7 +58,8 @@ function fncCheckList(obj) {
 	<p></p>
 	<p>
 
-		<%= f.submit "Votar", class: "btn-submit" %>
+		<%= f.submit "    Votar     ", class: "btn btn-success", style: "margin-left: 30px; width: 110px;" %>
+		<%= button_to "Cancelar", '/logout', style: "margin-left: 40px", class:"btn btn-danger" %></p>
 	<% end %>
 
 	<!--<button style="background-color: darkseagreen">Confirmar voto</button><span style="padding-left: 5em"></span>-->
@@ -97,7 +99,8 @@ function fncCheckList(obj) {
 <!--< % end %>-->
 
 	<!--<button style='background-color: crimson'></button>-->
-	<%= button_to "Cancelar", '/logout' %></p>
+	
+	</div>
 </body>
 
 </html> 

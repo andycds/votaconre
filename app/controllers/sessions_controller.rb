@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 	def new
-		@title = 'versão 0.0.7'
+		@title = 'versão 0.0.8'
 	end
 	def create
 		@person = Person.find_by_documento(params[:session][:documento])
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 			redirect_to '/'
 		else
 			#redirect_to 'login'
-			flash[:notice] = "Problemas com a autenticação."
+			flash[:notice] = "Erro no documento/senha."
    			render 'new'
 		end
 	end

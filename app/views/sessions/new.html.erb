@@ -1,4 +1,4 @@
-<div style="margin: auto; width: 250px; padding-top: 50px; font-family: sans-serif"><h2>Login - VotaConre</h2></div>
+<div style="margin: auto; width: 300px; padding-top: 50px; font-family: sans-serif"><h2>Login - VotaConre</h2></div>
 
 <div style="margin:auto; width: 250px;">
 	<% if flash.count > 0 then %>
@@ -13,12 +13,12 @@
 		<!-- no flash -->
 	<% end %>
 </div>
-<div style="margin: auto; background-color: rgb(163, 168, 233); width: 250px; padding: 50px 20px 50px 20px; border: 1px solid black;">
+<div style="margin: auto; background-color: rgb(163, 168, 233); width: 300px; padding: 50px 20px 50px 20px; border: 1px solid black;">
 	<%= form_for(:session, url: login_path) do |f| %> 
-		<%= f.text_field :documento, :placeholder => "Documento" %> 
-		<%= f.password_field :password, :placeholder => "Senha" %> 
-		<%= f.submit "Log in", class: "btn-submit" %>
-		<input type="button" value="Esqueci a senha" onclick="alert('Entre em contato com o seu Conselho para obter seu login')"/> 
+		<%= f.text_field :documento, :placeholder => "Documento", class:"form-control" %> 
+		<%= f.password_field :password, :placeholder => "Senha", class:"form-control" %> 
+		<%= f.submit "Log in", class: "btn btn-success" %>
+		<input type="button" value="Esqueci a senha" class="btn btn-info" onclick="alert('Entre em contato com o seu Conselho para obter seu login')"/> 
 	<% end %>
 </div>
 <div style="margin: auto; width: 250px; font-size: 8px; font-family: sans-serif; color: gray"><%= @title %></div>
