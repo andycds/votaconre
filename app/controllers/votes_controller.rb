@@ -19,7 +19,6 @@ class VotesController < ApplicationController
 	end
 
 	def create
-		byebug
 		if current_user.ja_votou?
 			redirect_to '/'
 			return
