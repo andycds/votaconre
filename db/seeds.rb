@@ -15,6 +15,9 @@ e2 = Election.create(nome: "Eleição Teste CONRE-2", dt_inicio: Date.today, dt_
 e3 = Election.create(nome: "Eleição Teste CONRE-3", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
 e5 = Election.create(nome: "Eleição Teste CONRE-5", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
 
+cbr = Candidate.create(nome: "Voto Branco")
+cNu = Candidate.create(nome: "Voto Nulo")
+
 c21 = Candidate.create(nome: "Candidato 1", election: e2)
 c22 = Candidate.create(nome: "Candidato 2", election: e2)
 

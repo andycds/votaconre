@@ -6,30 +6,67 @@
 	<title><%= eleicao %></title>
 	<script language="JavaScript" type="text/JavaScript">
 
-function fncCheckList(obj) {
-	//alert(count)
-	if (obj.id < 6) {
-		document.getElementById(6).checked = false;
-		document.getElementById(7).checked = false;
-	} else {
-		for (var i = 1; i < 6; i++) {
-			document.getElementById(i).checked = false;
+function zerarCandidatos() {
+	for (var i = 1; i < 6; i++) {
+		var elem = document.getElementById(i);
+		if (elem != undefined) {
+			elem.checked = false;
 		}
-		if (obj.id == 6) {
-			document.getElementById(7).checked = false;
+	}
+}
+
+
+function fncCheckList(obj) {
+	if (parseInt(obj.id) >= 0) {
+ 		document.getElementById(-1).checked = false;
+ 		document.getElementById(-2).checked = false;
+ 	} else {
+ 		for (var i = 0; i < 12; i++) {
+ 			if (document.getElementById(i) != undefined) {
+ 				document.getElementById(i).checked = false;
+ 			}
+ 		}
+ 		if (parseInt(obj.id) == -1) {
+ 			document.getElementById(-2).checked = false;
+ 		} else {
+ 			document.getElementById(-1).checked = false;
+ 		}
+ 	}
+ 	var contagem = 0;
+ 	for (var i = 0; i < 12; i++) {
+ 		if (document.getElementById(i) != undefined && document.getElementById(i).checked) contagem++;
+ 	}
+ 	if (contagem > 3) {
+ 		for (var i = 0; i < 12; i++) {
+ 			if (document.getElementById(i) != undefined) {
+ 				document.getElementById(i).checked = false;
+ 			}
+ 		}
+ 	}
+	/*branco = document.getElementById(0);
+	nulo = document.getElementById(-1);
+	if (obj == branco) {
+		zerarCandidatos();
+		nulo.checked = false;
+	} else {
+		if (obj == nulo) {
+			zerarCandidatos();
+			branco.checked = false;
 		} else {
-			document.getElementById(6).checked = false;
+			nulo.checked = false;
+			branco.checked = false;
 		}
 	}
 	var contagem = 0;
 	for (var i = 1; i < 6; i++) {
-		if (document.getElementById(i).checked) contagem++;
-	}
-	if (contagem > 3) {
-		for (var i = 1; i < 6; i++) {
-			document.getElementById(i).checked = false;
+		var elem = document.getElementById(i);
+		if (elem != undefined) {
+			if (elem.checked) contagem++;
 		}
 	}
+	if (contagem > 3) {
+		zerarCandidatos();
+	}*/
 }
 </script>
 </head>
@@ -48,11 +85,11 @@ function fncCheckList(obj) {
 	<ul style="list-style-type: none;">
 		<% for i in 0...@votos.size do %>
 			<% candidato = @votos[i].candidate %>
-			<li><input type="checkbox" name="votos[<%=candidato.id%>]" value="<%=candidato.id%>" id="<%=candidato.id%>" onclick="javascript:fncCheckList(this);"> <%= candidato.nome %></li>
+			<li><input type="checkbox" name="votos[<%= candidato.id %>]" value="<%=candidato.id%>" id="<%= i %>" onclick="javascript:fncCheckList(this);"> <%= candidato.nome %></li>
 
 		<% end %>
-		<li><input type="checkbox" id="6" name="votos[6]" value="6" onclick="fncCheckList(this)"> Voto Branco</li>
-		<li><input type="checkbox" id="7" name="votos[7]" value="7" onclick="fncCheckList(this)"> Voto Nulo</li>
+		<li><input type="checkbox" id="-1" name="votos[13]" value="1" onclick="fncCheckList(this)"> Voto Branco</li>
+		<li><input type="checkbox" id="-2" name="votos[14]" value="2" onclick="fncCheckList(this)"> Voto Nulo</li>
 	</ul>
 	<p></p>
 	<p></p>
@@ -62,44 +99,6 @@ function fncCheckList(obj) {
 		<%= button_to "Cancelar", '/logout', style: "margin-left: 40px", class:"btn btn-danger" %></p>
 	<% end %>
 
-	<!--<button style="background-color: darkseagreen">Confirmar voto</button><span style="padding-left: 5em"></span>-->
-<!--< % = form_for(@vote) do |f| %>  -->
-  <!--<div class="field"> 
-    < % = f.label :message %><br> 
-    < % = f.text_area :content %> 
-  </div> -->
-  <!--<div class="actions"> 
-    < % = f.submit "Confirma voto" %> 
-  </div> 
-< % end % >-->
-
-
-<!--< % = form_for :voto do |f| %>-->
-<!--#, url: action: 'create'-->
-<!--	<input type="hidden" name="id" value=< %= params["format"] %>/>
-	<input type="hidden" name="eleicao" value=< %= @eleicao.id %>/>
-	<ul>
-		< % for candidato in @candidatos %>
-		<li>
-			<input type="checkbox" name="votos[< %= candidato.id %>]" value="< %= candidato.id %>" id="< % = candidato.id %>" onclick="javascript:fncCheckList(this);">-->
-			<!--< % = f.check_box candidato % >-->
-			<!--< % = candidato.nome %>
-			</input>
-		</li>
-		< % end %>
-	</ul>
-	< % ja_votou = !(Voto.find(:all, conditions: { pessoa_f_id: current_user.id})).empty?
-	if ja_votou %>
-		<p><b>Usuário já possui votos computados, nova votação não aceita.</b></p>
-	< % else	%>
-		< % = button_to 'Confirmar voto', "/votado", class: 'button.skip' %>
-	< % end %>-->
-	<!-- / votado -->
-	<!--< % = link_to 'Confirmar o voto', confirmar_votacao_path %>-->
-<!--< % end %>-->
-
-	<!--<button style='background-color: crimson'></button>-->
-	
 	</div>
 </body>
 
