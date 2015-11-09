@@ -18,16 +18,18 @@ e5 = Election.create(nome: "Eleição Teste CONRE-5", dt_inicio: Date.today, dt_
 cbr = Candidate.create(nome: "Voto Branco")
 cNu = Candidate.create(nome: "Voto Nulo")
 
+
+# Candidatos CONRE-2
+
 c21 = Candidate.create(nome: "Candidato 1", election: e2)
 c22 = Candidate.create(nome: "Candidato 2", election: e2)
+c23 = Candidate.create(nome: "Candidato 3", election: e2)
+
+# Candidatos CONRE-3
 
 c31 = Candidate.create(nome: "Candidato 1", election: e3)
 c32 = Candidate.create(nome: "Candidato 2", election: e3)
 c33 = Candidate.create(nome: "Candidato 3", election: e3)
-
-c51 = Candidate.create(nome: "Candidato 1", election: e5)
-c52 = Candidate.create(nome: "Candidato 2", election: e5)
-c53 = Candidate.create(nome: "Candidato 3", election: e5)
 
 #123
 pass = "$2a$10$VUV4fDA3cA.MqOMQsus1BejyOUJRR1VpjwhzaY79EBW5ehO74wu0."
@@ -35,8 +37,23 @@ pass = "$2a$10$VUV4fDA3cA.MqOMQsus1BejyOUJRR1VpjwhzaY79EBW5ehO74wu0."
 1.upto(9) do |i|
 	Person.create(nome: "Eleitor CONRE-2 #{i}", conselho: "CONRE2", documento: "20000#{i}", election: e2, password_digest: pass)
 	Person.create(nome: "Eleitor CONRE-3 #{i}", conselho: "CONRE3", documento: "30000#{i}", election: e3, password_digest: pass)
-	Person.create(nome: "Eleitor CONRE-5 #{i}", conselho: "CONRE5", documento: "50000#{i}", election: e5, password_digest: pass)
+	#Person.create(nome: "Eleitor CONRE-5 #{i}", conselho: "CONRE5", documento: "50000#{i}", election: e5, password_digest: pass)
 end
+
+
+# Eleitores CONRE-2
+
+#require "#{Rails.root}/db/conre2.rb"
+
+# Eleitores CONRE-3
+
+#require "#{Rails.root}/db/conre3.rb"
+
+# Eleitores CONRE-5
+
+require "#{Rails.root}/db/conre5.rb"
+
+
 
 #10.upto(99) do |i|
 #	Person.create(nome: "Eleitor CONRE-2 #{i}", conselho: "CONRE2", documento: "2000#{i}", election: e2, password_digest: pass)
