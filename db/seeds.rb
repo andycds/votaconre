@@ -1,3 +1,4 @@
+# coding: UTF-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -11,9 +12,9 @@
 #e2 = Election.create(nome: "Elei&ccedil;&atilde;o Teste CONRE-2", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
 #e3 = Election.create(nome: "Elei&ccedil;&atilde;o Teste CONRE-3", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
 #e5 = Election.create(nome: "Elei&ccedil;&atilde;o Teste CONRE-5", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
-e2 = Election.create(nome: "Eleição Teste CONRE-2", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
-e3 = Election.create(nome: "Eleição Teste CONRE-3", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
-e5 = Election.create(nome: "Eleição Teste CONRE-5", dt_inicio: Date.today, dt_fim: Date.today + 10.days)
+e2 = Election.create(nome: "Eleição Teste CONRE-2", dt_inicio: Date.today, dt_fim: Date.today + 3.days, cabecalho: "", rodape: "")
+e3 = Election.create(nome: "Eleição Teste CONRE-3", dt_inicio: Date.today, dt_fim: Date.today + 1.days, cabecalho: "", rodape: "")
+e5 = Election.create(nome: "Eleição Teste CONRE-5", dt_inicio: Date.today, dt_fim: Date.today + 3.days, cabecalho: "CONSELHO REGIONAL DE ESTATÍSTICA DA<br/>5a REGIÃO", rodape: "Av. Sete de Setembro, 184 – Edf. Sta Rita, Anexo – 4o andar, Sala 406 – São Bento – Salvador/BA – CEP: 40060-001<br/>Tel: (71) 3321-4129 Tel/Fax: (71) 3243-6086 Cel:(71) 8757-5891<br/>E-mail: conre5r@gmail.com")
 
 cbr = Candidate.create(nome: "Voto Branco")
 cNu = Candidate.create(nome: "Voto Nulo")

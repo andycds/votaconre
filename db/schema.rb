@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20150929004203) do
 
   create_table "elections", force: :cascade do |t|
     t.string   "nome"
+    t.string   "cabecalho"
+    t.string   "rodape"
     t.datetime "dt_inicio"
     t.datetime "dt_fim"
     t.datetime "created_at", null: false

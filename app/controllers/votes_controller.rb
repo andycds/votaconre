@@ -68,13 +68,17 @@ class VotesController < ApplicationController
 		hora = Vote.find_by_person_id(current_user.id).updated_at
 		#agora = Rails.env == 'production' ? (Time.now + 6.hour).to_s : Time.now.to_s
 		html = "<!DOCTYPE html><meta charset='UTF-8'><html><head></head><body>"
+		html = html + "<h2 style='text-align: center;'>" + current_user.election.cabecalho + "</h2><hr/><br/><br/><br/>"
 		html = html + "<div style='width: 400px; border: 1px solid gray; margin:20px; padding:20px;'>"
 #		html = html + '<p> <img src="http://conre3.heroku.com/images/conre3logo.png" /> </p>'
 		html = html + "<p><b>" + current_user.election.nome + "</b></p>"
 		html = html + "<p> Comprovante de vota&ccedil;&atilde;o</p> <p>Gerado &agrave;s: " + hora.to_s + "</p>"# + params
 		html = html + "<p>Profissional: " + current_user.nome + "</p>"
 		html = html + "<p>Login: " + current_user.documento + "</p>"
-		html = html + "</div></body></html>"
+		html = html + "</div>"
+		html = html + "<div style='height: 400px;'></div>"
+		html = html + "<hr/><p style='font-size: 10px; text-align: center;'>" + current_user.election.rodape + "</p>"
+		html = html + "</body></html>"
 		pdfkit_instance = PDFKit.new(html)
 		send_data(pdfkit_instance.to_pdf, {filename: "comprovante.pdf"})
 	end
