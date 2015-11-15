@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/votado' => 'votes#votado'
   get '/pdfdown' => 'votes#pdfdown'
   resources :votes
+
+  get '/resultadoCode' => 'elections#resultado'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
