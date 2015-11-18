@@ -20,11 +20,6 @@ cbr = Candidate.create(nome: "Voto Branco")
 cNu = Candidate.create(nome: "Voto Nulo")
 
 
-# Candidatos CONRE-2
-
-c21 = Candidate.create(nome: "Candidato 1", election: e2)
-c22 = Candidate.create(nome: "Candidato 2", election: e2)
-c23 = Candidate.create(nome: "Candidato 3", election: e2)
 
 # Candidatos CONRE-3
 
@@ -36,7 +31,7 @@ c33 = Candidate.create(nome: "Candidato 3", election: e3)
 pass = "$2a$10$VUV4fDA3cA.MqOMQsus1BejyOUJRR1VpjwhzaY79EBW5ehO74wu0."
 
 1.upto(9) do |i|
-	Person.create(nome: "Eleitor CONRE-2 #{i}", conselho: "CONRE2", documento: "20000#{i}", election: e2, password_digest: pass)
+	#Person.create(nome: "Eleitor CONRE-2 #{i}", conselho: "CONRE2", documento: "20000#{i}", election: e2, password_digest: pass)
 	Person.create(nome: "Eleitor CONRE-3 #{i}", conselho: "CONRE3", documento: "30000#{i}", election: e3, password_digest: pass)
 	#Person.create(nome: "Eleitor CONRE-5 #{i}", conselho: "CONRE5", documento: "50000#{i}", election: e5, password_digest: pass)
 end
@@ -44,7 +39,7 @@ end
 
 # Eleitores CONRE-2
 
-#require "#{Rails.root}/db/conre2.rb"
+require "#{Rails.root}/db/conre2.rb"
 
 # Eleitores CONRE-3
 
@@ -52,7 +47,7 @@ end
 
 # Eleitores CONRE-5
 
-require "#{Rails.root}/db/conre5.rb"
+#require "#{Rails.root}/db/conre5.rb"
 
 
 
