@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 		else
 			#redirect_to 'login'
 			if @person && @person.authenticate(params[:session][:password])
-				flash[:notice] = "Fora do prazo para votação. ----" + @person.election.dt_inicio.in_time_zone('Brasilia').to_s + "-------" + @person.election.dt_fim.in_time_zone('Brasilia').to_s + "-------" + Time.now.in_time_zone('Brasilia').to_s
+				flash[:notice] = "Fora do prazo para votação." #+" ----" + @person.election.dt_inicio.in_time_zone('Brasilia').to_s + "-------" + @person.election.dt_fim.in_time_zone('Brasilia').to_s + "-------" + Time.now.in_time_zone('Brasilia').to_s
 			else
 				flash[:notice] = "Erro no documento/senha."
 			end

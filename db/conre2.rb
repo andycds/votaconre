@@ -7,6 +7,14 @@ c21 = Candidate.create(nome: "Elisabeth Borges Gonçalves", election: e2)
 c22 = Candidate.create(nome: "José Ronald Noronha Lemos", election: e2)
 c23 = Candidate.create(nome: "Edson Mandarino Santos", election: e2)
 
+
+
+
+
+
+
+
+
 # Eleitores CONRE-2
 
 pass = "$2a$10$VUV4fDA3cA.MqOMQsus1BejyOUJRR1VpjwhzaY79EBW5ehO74wu0."
