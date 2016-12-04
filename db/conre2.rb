@@ -3,15 +3,9 @@ e2 = Election.where('nome LIKE ?', "%CONRE-2%").first
 
 # Candidatos CONRE-2
 
-c21 = Candidate.create(nome: "Elisabeth Borges Gonçalves", election: e2)
-c22 = Candidate.create(nome: "José Ronald Noronha Lemos", election: e2)
-c23 = Candidate.create(nome: "Edson Mandarino Santos", election: e2)
-
-
-
-
-
-
+c21 = Candidate.create(nome: "Carlos Alberto Castelo Fonseca", election: e2)
+c22 = Candidate.create(nome: "Herich Ulrich", election: e2)
+c23 = Candidate.create(nome: "Luiz Gonzaga de Souza Dutra", election: e2)
 
 
 
