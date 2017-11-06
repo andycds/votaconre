@@ -40,15 +40,15 @@ end
 
 # Eleitores CONRE-2
 
-require "#{Rails.root}/db/conre2.rb"
+########require "#{Rails.root}/db/conre2.rb"
 
 # Eleitores CONRE-3
 
-require "#{Rails.root}/db/conre3.rb"
+########require "#{Rails.root}/db/conre3.rb"
 
 # Eleitores CONRE-4
 
-require "#{Rails.root}/db/conre4.rb"
+########require "#{Rails.root}/db/conre4.rb"
 
 
 
